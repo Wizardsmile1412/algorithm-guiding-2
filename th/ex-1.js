@@ -4,16 +4,34 @@
         - Function นี้จะ Return กระเป๋านักเรียนคู่ที่มีน้ำหนักรวมกันมากที่สุด โดยกระเป๋า 2 ใบนี้ต้องวางอยู่ติดกัน
         - ถ้ามีกระเป๋าน้อยกว่า 2 ใบ ให้ Return null
 */
-
+//loop, if else
+//Max and compare
+// check length < 2 return null
 function heaviestBagPair(bagWeights) {
   // Start Coding Here
+  if (bagWeights.length<2){
+    return null;
+  }
+
+  let maxWeight = 0;
+  let maxWeightSet = [];
+  for (let i=0; i<bagWeights.length-1; i++){
+    let currentWeight = bagWeights[i] + bagWeights[i+1];
+
+    if (currentWeight>maxWeight){
+      maxWeight = currentWeight;
+      maxWeightSet = [bagWeights[i], bagWeights[i+1]]
+    }
+  }
+  return maxWeightSet;
+
 }
 
 console.log(heaviestBagPair([5, 8, 12, 15, 7]));
 // Output: [12, 15] เพราะเป็นคู่กระเป๋าที่หนักที่สุด (27 กก.)
 
 console.log(heaviestBagPair([10, 20, 5, 7, 15]));
-// Output: [10, 20] เพราะเป็นคู่กระเป๋าที่หนักที่สุด (30 กก.)
+// // Output: [10, 20] เพราะเป็นคู่กระเป๋าที่หนักที่สุด (30 กก.)
 
 console.log(heaviestBagPair([4]));
 // Output: null เพราะมีกระเป๋าแค่ใบเดียว
